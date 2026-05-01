@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Seamly</title>
+<meta name="description" content="Get help with Seamly — answers to common questions and direct support.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #1a8fff;
+  --blue-deep: #0062cc;
+  --blue-light: #e5f3ff;
+  --ink: #0d0d12;
+  --muted: #7a7a8c;
+  --surface: #f7f8fc;
+  --border: rgba(0,0,0,0.07);
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1080px; margin: auto;
+  padding: 13px 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { width: 30px; height: 30px; border-radius: 8px; }
+.nav-brand { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+
+.nav-links {
+  margin-left: auto;
+  display: flex; gap: 6px;
+}
+
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: var(--muted);
+  padding: 6px 12px; border-radius: 20px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-links a:hover { color: var(--ink); background: var(--surface); }
+.nav-links a.active { color: var(--blue); background: var(--blue-light); }
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 24px 70px;
+  background: linear-gradient(160deg, #ddf0ff 0%, #eaf5ff 40%, #ffffff 75%);
+  position: relative; overflow: hidden;
+}
+
+.hero-orb {
+  position: absolute;
+  width: 600px; height: 600px;
+  top: -250px; left: 50%; transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(26,143,255,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero img {
+  width: 88px; height: 88px;
+  border-radius: 22px;
+  box-shadow: 0 16px 48px rgba(0, 100, 200, 0.2), 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 52px);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+
+.hero p {
+  font-size: 18px; color: var(--muted);
+  font-weight: 300;
+  position: relative; z-index: 1;
+}
+
+/* MAIN */
+main {
+  max-width: 680px;
+  margin: auto;
+  padding: 64px 24px 80px;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #0a6cd4, #1a8fff);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contact-card h3 {
+  font-size: 20px; font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-card p {
+  font-size: 15px; opacity: 0.8; font-weight: 300;
+}
+
+.contact-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--blue-deep);
+  padding: 10px 20px; border-radius: 10px;
+  font-weight: 600; font-size: 14px;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.16);
+}
+
+.faq-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.faq {
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+.faq-q {
+  padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer;
+  font-weight: 500; font-size: 16px;
+  user-select: none;
+  background: var(--white);
+  gap: 12px;
+}
+
+.faq-q:hover { background: var(--surface); }
+
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  color: var(--muted);
+  transition: transform 0.25s;
+}
+
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 24px;
+  font-size: 15px; color: var(--muted);
+  line-height: 1.65; font-weight: 300;
+  background: var(--surface);
+}
+
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding: 16px 24px 20px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.5);
+  padding: 50px 24px 40px;
+}
+
+.footer-inner {
+  max-width: 1080px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand img { width: 28px; height: 28px; border-radius: 7px; opacity: 0.85; }
+.footer-brand span { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+.footer-copy {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 28px; padding-top: 24px;
+  font-size: 12px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="Seamly">
+      <span class="nav-brand">Seamly</span>
+    </a>
+    <div class="nav-links">
+      <a href="support.html" class="active">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-orb"></div>
+  <img src="logo.png" alt="Seamly">
+  <h1>Support</h1>
+  <p>We're here to help you stream seamlessly.</p>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <div class="contact-card">
+    <div>
+      <h3>Get in touch</h3>
+      <p>We usually respond within 24 hours.</p>
+    </div>
+    <a class="contact-btn" href="mailto:support@seamly.in">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+      support@seamly.in
+    </a>
+  </div>
+
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Why won't some videos play?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="faq-a">Some platforms restrict playback outside their official apps. This is a limitation set by the content provider, not Seamly.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Does Seamly store or host videos?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="faq-a">No. Seamly does not host, store, or cache any content. It simply plays streams you provide — your data stays between you and the source.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Background playback isn't working — what do I do?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="faq-a">Make sure the stream supports audio output and that your device's background app refresh is enabled. Some streams are video-only and don't support audio in the background.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        What stream formats does Seamly support?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="faq-a">Seamly supports HLS (.m3u8), direct HTTP video/audio URLs, and M3U playlist links. If you have a compatible link, paste it in and you're ready to go.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        Is Seamly free to use?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+      <div class="faq-a">Yes, Seamly is free to download on the App Store. Some features may be available as optional upgrades in the future.</div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Seamly">
+      <span>Seamly</span>
+    </div>
+    <div class="footer-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:support@seamly.in">support@seamly.in</a>
+    </div>
+  </div>
+  <div class="footer-inner footer-copy">
+    <span>© 2026 Seamly. All rights reserved.</span>
+    <span>Effective Date: May 1, 2026</span>
+  </div>
+</footer>
+
+<script>
+  function toggle(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
